@@ -52,5 +52,32 @@
         // }
     }
 
-    <h2>La lettera "a" è contenuta: @conta volte</h2>
+    <h2>La lettera "a" nella frase "@frase" è contenuta: @conta volte</h2>
+</div>
+
+<div class="text-center mt-5 card">
+    <strong>
+        4. Creare una List<int> di 20 numeri interi (generati random da 1 a 90, 1 e 90 inclusi) e mostrare in pagina solo i numeri compresi tra 20 e 70
+    </strong>
+
+    @{
+        List<int> numeriInteri = new List<int>();
+
+        for(int i = 0; i < 20; i++)
+        {
+            Random rnd = new Random();
+            numeriInteri.Add(rnd.Next(1, 91));
+        }
+    }
+
+    <h2>
+    @foreach(int numeri in numeriInteri)
+    {
+        @if(numeri >= 20 && numeri <= 70)
+        {
+            <span>@numeri</span>
+        }
+    }
+    </h2>
+    
 </div>
