@@ -1,8 +1,56 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Esercizi Razor";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mt-5 card">
+    <strong>
+        1. Dichiarare una variabile valorizzandola con il nostro nome.
+        Dichiarare un'altra variabile valorizzandola con il nostro cognome.
+        Stampare il nostro nome e cognome all'interno di un tag h2.
+    </strong>
+
+    @{
+        string nome = "Luca";
+        string cognome = "Zanfrisco";
+    }
+    <h2>@nome @cognome</h2>
+</div>
+
+<div class="text-center mt-5 card">
+    <strong>
+        2. Creare una funzione che stampa la somma dei numeri che vanno da 1 a n (con n passato come parametro - n incluso)
+        Stampare dentro uno span il risultato.
+    </strong>
+
+    @{
+        int SommaN(int n)
+        {
+            return ((n + 1) * n) / 2;
+        }
+    }
+    <h2>@SommaN(5)</h2>
+</div>
+
+<div class="text-center mt-5 card">
+    <strong>
+        3. Contare quante volte la lettera a è presente nalla frase "nel mezzo del cammin di nostra vita" e stampare questo valore in pagina
+    </strong>
+
+    @{
+        string frase = "nel mezzo del cammin di vostra vita";
+
+        // Versione compatta 
+        int conta = frase.Count(c => c == 'a');
+
+        // Versione Estesa 
+        // for(int i = 0; i < frase.Length; i++)
+        // {
+        //     @if(frase[i]  == 'a')
+        //     {
+        //         conta++;
+        //     }
+        // }
+    }
+
+    <h2>La lettera "a" è contenuta: @conta volte</h2>
 </div>
