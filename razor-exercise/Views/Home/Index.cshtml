@@ -3,24 +3,24 @@
 }
 
 <div class="text-center mt-5 card">
-    <strong>
+    <h4>
         1. Dichiarare una variabile valorizzandola con il nostro nome.
         Dichiarare un'altra variabile valorizzandola con il nostro cognome.
         Stampare il nostro nome e cognome all'interno di un tag h2.
-    </strong>
+    </h4>
 
     @{
         string nome = "Luca";
         string cognome = "Zanfrisco";
     }
-    <h2>@nome @cognome</h2>
+    <strong>@nome @cognome</strong>
 </div>
 
 <div class="text-center mt-5 card">
-    <strong>
+    <h4>
         2. Creare una funzione che stampa la somma dei numeri che vanno da 1 a n (con n passato come parametro - n incluso)
         Stampare dentro uno span il risultato.
-    </strong>
+    </h4>
 
     @{
         int SommaN(int n)
@@ -28,21 +28,21 @@
             return ((n + 1) * n) / 2;
         }
     }
-    <h2>@SommaN(5)</h2>
+    <strong>@SommaN(5)</strong>
 </div>
 
 <div class="text-center mt-5 card">
-    <strong>
+    <h4>
         3. Contare quante volte la lettera a è presente nalla frase "nel mezzo del cammin di nostra vita" e stampare questo valore in pagina
-    </strong>
+    </h4>
 
     @{
         string frase = "nel mezzo del cammin di vostra vita";
 
-        // Versione compatta 
+        // Versione compatta
         int conta = frase.Count(c => c == 'a');
 
-        // Versione Estesa 
+        // Versione Estesa
         // for(int i = 0; i < frase.Length; i++)
         // {
         //     @if(frase[i]  == 'a')
@@ -52,13 +52,13 @@
         // }
     }
 
-    <h2>La lettera "a" nella frase "@frase" è contenuta: @conta volte</h2>
+    <strong>La lettera "a" nella frase "@frase" è contenuta: @conta volte</strong>
 </div>
 
 <div class="text-center mt-5 card">
-    <strong>
+    <h4>
         4. Creare una List<int> di 20 numeri interi (generati random da 1 a 90, 1 e 90 inclusi) e mostrare in pagina solo i numeri compresi tra 20 e 70
-    </strong>
+    </h4>
 
     @{
         List<int> numeriInteri = new List<int>();
@@ -70,14 +70,53 @@
         }
     }
 
-    <h2>
-    @foreach(int numeri in numeriInteri)
-    {
-        @if(numeri >= 20 && numeri <= 70)
+    <strong>
+        @foreach(int numeri in numeriInteri)
         {
-            <span>@numeri</span>
+            @if(numeri >= 20 && numeri <= 70)
+            {
+                <span>@numeri</span>
+            }
         }
+    </strong>
+
+</div>
+
+<div class="text-center mt-5 card">
+    <h4>
+        5. Stampare in pagina la data e l'ora attuale (usando la classe DateTime) con il formato anno-mese-giorno ore:minuti:secondi
+    </h4>
+
+    @{
+        DateTime data = DateTime.Now;
     }
-    </h2>
-    
+
+    <strong>
+        @data.ToString();
+    </strong>
+
+</div>
+
+<div class="text-center mt-5 card">
+    <h4>
+        6. Partendo dalla data di oggi (usando la classe DateTime) stampare in pagina <br />
+        a. la data di 7 giorni fa <br />
+        b. che giorno della settimana è oggi (il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...) <br />
+        c. che giorno della settimana sarà nello stesso giorno e mese di oggi ma tra un anno (il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
+    </h4>
+
+    @{
+        DateTime dataOggi = DateTime.Now;
+        DateTime setteGiornoFa = dataOggi.AddDays(-7);
+        string nomeGiorno = dataOggi.DayOfWeek.ToString();
+        string nomeGiornoTraAnno = dataOggi.AddDays(365).DayOfWeek.ToString();
+    }
+
+    <strong>
+        <div>@dataOggi.ToString()</div>
+        <div>@setteGiornoFa.ToString("dd/MM/yyyy")</div>
+        <div>@nomeGiorno</div>
+        <div>@nomeGiornoTraAnno</div>
+    </strong>
+
 </div>
